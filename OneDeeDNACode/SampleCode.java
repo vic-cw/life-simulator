@@ -20,28 +20,6 @@ import lifesimulator.C;
 public class SampleCode {
     
     
-    
-    
-    public static void main(String[] args) throws LanguageImplementationException, InfiniteLoopDnaException{
-        
-        Code code=new Code();        
-        VariableEnvironment varEnv=new VariableEnvironment();
-        
-        
-        varEnv.add(null);
-        varEnv.add(new Integer(-20));
-        varEnv.add(new Integer(-11));
-        
-        codeDumbWalking(code);
-        
-        Interpreter interpreter=new Interpreter(C.defaultMaxNumberOfLoops);
-        interpreter.execute(code, varEnv);
-        
-        System.out.print("Answer : ");
-        System.out.println(varEnv.get(0).intValue());
-        
-    }
-    
     public static void calculateDistanceToHole(Code code){
         
         // This is the code for someone just walking away from the hole
