@@ -44,6 +44,7 @@ public class LifeSimulator {
         BufferedReader in=new BufferedReader(new InputStreamReader(System.in));
         while(!input.equals("quit")){
             System.out.println();
+            System.out.print("> ");
             input=in.readLine();
             if(input.equals("quit")){
                 System.out.println("Bye bye :)");
