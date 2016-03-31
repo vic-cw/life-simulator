@@ -74,6 +74,18 @@ public class LifeSimulator {
                 }
                 continue;
             }
+            if(input.equals("display DNA composition") || input.equals("display dna composition")){
+                int[] register=world.getAverageNumberOfCodeNodePerBeing(null);
+        
+                System.out.println("Instruction Assign : \t"+register[0]);
+                System.out.println("Instruction Define : \t"+register[1]);
+                System.out.println("Instruction If : \t"+register[2]);
+                System.out.println("Instruction While : \t"+register[3]);
+                System.out.println("Value 0 or 1 : \t\t"+register[4]);
+                System.out.println("Value Sum or Sub : \t"+register[5]);
+                System.out.println("Value Variable : \t"+register[6]);
+                continue;
+            }
             if(input.startsWith("display")){
                 elementsOfInput=input.split(" ");
                 if(elementsOfInput.length<2){
@@ -160,5 +172,8 @@ public class LifeSimulator {
         System.out.println("\"display species x-x-x...\" : display the species with code x-x-x ");
         
         System.out.println("\n\"iterate\" or \"iterate once\" : iterate the world once ");
+        
+        System.out.println("\n\"display DNA composition\" : display total number of each "+
+                "type of DNA code element across all living beings");
     }
 }
