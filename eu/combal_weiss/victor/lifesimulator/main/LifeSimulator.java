@@ -35,7 +35,7 @@ public class LifeSimulator {
         
         System.out.println("---- WELCOME TO LIFE SIMULATOR ----");
         
-        System.out.println("If you have any question, please type \"help\".\n");
+        System.out.println("For description of available commands, type \"help\" or \"h\".\n");
         
         System.out.println("Your world is created. How can I help you ?");
         
