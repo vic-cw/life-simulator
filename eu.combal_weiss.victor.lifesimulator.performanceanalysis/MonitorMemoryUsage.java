@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Test;
+package eu.combal_weiss.victor.lifesimulator;
 
 import OneDeeDNACode.LanguageImplementationException;
 import java.io.BufferedReader;
@@ -18,7 +18,7 @@ import lifesimulator.Species;
  *
  * @author vic
  */
-public class MonitoringMemoryUsage {
+public class MonitorMemoryUsage {
     
     
     public static void main(String[] args) throws LanguageImplementationException, Exception {
