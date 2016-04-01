@@ -5,9 +5,6 @@ import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Map.Entry;
 
 class SpeciesPopulationRegister extends HashMap<Species, OneDeePopulation>{
     

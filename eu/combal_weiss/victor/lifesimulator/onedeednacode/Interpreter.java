@@ -40,7 +40,6 @@ public class Interpreter {
         if(C.debug){
             C.println("Existing execute");
         }
-        return;
     }
     
     

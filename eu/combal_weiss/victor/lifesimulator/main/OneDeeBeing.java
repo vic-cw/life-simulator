@@ -8,7 +8,6 @@ import eu.combal_weiss.victor.lifesimulator.onedeednacode.LanguageImplementation
 import eu.combal_weiss.victor.lifesimulator.onedeednacode.Randomizer;
 import eu.combal_weiss.victor.lifesimulator.onedeednacode.VariableEnvironment;
 import java.io.PrintStream;
-import java.util.Random;
 
 public class OneDeeBeing {
     

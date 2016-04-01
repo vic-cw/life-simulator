@@ -1,7 +1,6 @@
 
 package eu.combal_weiss.victor.lifesimulator.onedeednacode;
 
-import eu.combal_weiss.victor.lifesimulator.main.C;
 
 public class Assign implements OneDeeDnaInstruction {
     

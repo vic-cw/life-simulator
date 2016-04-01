@@ -1,8 +1,6 @@
 
 package eu.combal_weiss.victor.lifesimulator.onedeednacode;
 
-import java.util.LinkedList;
-import eu.combal_weiss.victor.lifesimulator.main.C;
 
 public class SampleCode {
     
@@ -36,9 +34,7 @@ public class SampleCode {
     public static void codeLazyWalking(Code code){
         
         calculateDistanceToHole(code);
-        
-        //We will code here that if the distance between hole and being is more than 5, then no need to move
-        OneDeeDnaValue distanceToHole=new Variable(Constant.ZERO);
+
     }
     
 }

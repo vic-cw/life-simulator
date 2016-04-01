@@ -2,7 +2,6 @@
 package eu.combal_weiss.victor.lifesimulator.main;
 
 import eu.combal_weiss.victor.lifesimulator.onedeednacode.Code;
-import eu.combal_weiss.victor.lifesimulator.onedeednacode.Interpreter;
 import eu.combal_weiss.victor.lifesimulator.onedeednacode.OneDeeDnaInstruction;
 import eu.combal_weiss.victor.lifesimulator.onedeednacode.SampleCode;
 import java.io.PrintStream;
