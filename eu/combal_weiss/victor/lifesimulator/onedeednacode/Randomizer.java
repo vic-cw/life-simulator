@@ -1,16 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package eu.combal_weiss.victor.lifesimulator.onedeednacode;
 
 import java.util.Random;
 import eu.combal_weiss.victor.lifesimulator.main.C;
 
-/**
- *
- * @author vic
- */
 public class Randomizer {
     
     
@@ -438,33 +431,3 @@ public class Randomizer {
     
     
 }
-
-
-/*
- * Quelle randomisation veut-on ?
- * 
- * On veut une certaine continuité de l'espèce, pour que celles qui marchent bien perdurent.
- * Donc déjà on ne fera une mutation qu'une fois sur 2 ou 3, bref ça c'est un paramètre qu'on peut mettre dans le monde,
- * ou bien dans le DNA, ou bien comme caractéristique d'un being.
- * 
- * On peut aussi ajouter une probabilité que la mutation conduise à la mort du bébé avec une certaine probabilité.
- * Dans ce cas on peut lancer une exception.
- * 
- * Ceci étant dit, quand on choisit de randomize quelqu'un, comment on fait ?
- * On a déjà dit qu'il y avait plusieurs types de modifications :
- * - suppression d'un élément
- * - ajout d'un élément
- * - modification d'un élément
- * Le petit problème que j'ai pour implémenter cette framework dérivée de l'ADN, est dans la définition d'un "élément"
- * En effet, l'ADN c'est une suite de lettres, donc on peut en modifier une par une autre et voilà. 
- * Dans le cas de mon code, c'est plutôt une suite d'arbres.
- * Chaque arbre étant une instruction. Un arbre pouvant être très petit ou très grand.
- * 
- * Une fois qu'on est capable de compter les éléments et de savoir rapidement combien il y en a au total, 
- * qu'est-ce qu'on fait ?
- * Moi j'avais en tête de faire une seule mutation et voilà. Mais en fait on peut en faire plusieurs.
- * Une autre possibilité c'est de dire que chaque noeud a une probabilité de muter donnée. En fait ça revient au même,
- * à un changement de variable près.
- * Donc je vais faire deux fonctions. Une qui prend en paramètre le nombre de mutation. Une qui prend en paramètre la probabilité de muter.
- * 
- */

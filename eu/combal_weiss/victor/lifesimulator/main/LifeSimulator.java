@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package eu.combal_weiss.victor.lifesimulator.main;
 
 
@@ -10,15 +7,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-/**
- *
- * @author vic
- */
 public class LifeSimulator {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) throws LanguageImplementationException, Exception {
         int[] initialPopulation= new int[30];
         for(int i=0; i<initialPopulation.length; i++){

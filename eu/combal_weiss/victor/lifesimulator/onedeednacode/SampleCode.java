@@ -1,22 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package eu.combal_weiss.victor.lifesimulator.onedeednacode;
 
 import java.util.LinkedList;
 import eu.combal_weiss.victor.lifesimulator.main.C;
 
-/**
- *
- * @author vic
- * 
- * On suppose que le décodeur placera les variables suivantes dans la liste de variables :
- * 0 : la valeur de retour (négatif -> -1, zéro -> 0, positif -> +1)
- * 1 : position du being
- * 2 : position du trou
- * On va essayer d'implémenter le code du being intelligent qui s'éloigne du trou.
- */
 public class SampleCode {
     
     

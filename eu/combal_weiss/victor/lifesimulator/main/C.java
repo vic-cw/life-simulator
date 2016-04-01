@@ -1,13 +1,6 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package eu.combal_weiss.victor.lifesimulator.main;
 
-/**
- *
- * @author vic
- */
 public class C {
     
     public static final boolean debug=false;

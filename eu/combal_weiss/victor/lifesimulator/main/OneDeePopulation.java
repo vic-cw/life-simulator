@@ -1,16 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package eu.combal_weiss.victor.lifesimulator.main;
 
 import java.io.PrintStream;
 import java.util.LinkedList;
 
-/**
- *
- * @author vic
- */
 public class OneDeePopulation extends LinkedList<OneDeeBeing> {
     
     

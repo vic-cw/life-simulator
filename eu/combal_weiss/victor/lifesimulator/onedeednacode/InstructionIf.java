@@ -1,16 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package eu.combal_weiss.victor.lifesimulator.onedeednacode;
 
 import eu.combal_weiss.victor.lifesimulator.main.C;
 
 
-/**
- *
- * @author vic
- */
 public class InstructionIf implements OneDeeDnaInstruction {
     
     @Override

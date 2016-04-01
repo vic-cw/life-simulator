@@ -1,15 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package eu.combal_weiss.victor.lifesimulator.main;
 
 import eu.combal_weiss.victor.lifesimulator.onedeednacode.OneDeeDnaInstruction;
 
-/**
- *
- * @author vic
- */
 public class Species {
 
     private Species parent;

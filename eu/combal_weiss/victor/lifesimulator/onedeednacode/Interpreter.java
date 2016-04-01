@@ -1,17 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package eu.combal_weiss.victor.lifesimulator.onedeednacode;
 
 import java.io.PrintStream;
 import eu.combal_weiss.victor.lifesimulator.main.C;
 
 
-/**
- *
- * @author vic
- */
 public class Interpreter {
     
     private int maximumNumberOfLoops;
@@ -105,43 +98,7 @@ public class Interpreter {
         }
         throw new LanguageImplementationException("Problem in executeInstruction() : instruction with a wrong type number");
     }
-    
-    /**
-    private void findVariablesInCondition(OneDeeDnaValue condition, LinkedList<Integer> variablesInCondition) throws LanguageImplementationException{
-        findVariablesInValue(condition, variablesInCondition);
-    }
-     */
-    
-    /**
-    private void findVariablesInValue(OneDeeDnaValue value, LinkedList<Integer> variablesInValue) throws LanguageImplementationException{
-        switch(value.getType()){
-            case Constant.INT_ZERO :
-            case Constant.INT_ONE :
-                return;
-            case Constant.SUBSTRACTION :
-                Substraction subValue=(Substraction) value;
-                findVariablesInValue(subValue.getOperand1(), variablesInValue);
-                findVariablesInValue(subValue.getOperand2(), variablesInValue);
-                return;
-            case Constant.SUM :
-                Sum sumValue=(Sum) value;
-                findVariablesInValue(sumValue.getOperand1(), variablesInValue);
-                findVariablesInValue(sumValue.getOperand2(), variablesInValue);
-                return;
-            case Constant.VARIABLE :
-                Variable varValue=(Variable) value;
-                if(hasACallToVariable(varValue.getIndex())){
-                    findVariablesInValue(varValue.getIndex(), variablesInValue);
-                    return;
-                }
-                int index=calculateValue(varValue.getIndex(), new VariableEnvironment());
-                if(!variablesInValue.contains(index))
-                    variablesInValue.add(index);
-                return;
-        }
-    }
-     */
-    
+        
     /**
      * This function returns true if the value reads a variable at some point, and false if it is only a constant number.
      * @param value
@@ -164,24 +121,7 @@ public class Interpreter {
                 return true;
         }
     }
-    
-    /**
-     * This function removes all variables modifiable by the code from the list of indexes variablesNotModifiableByCode.
-     * 
-     * @param variablesNotModifiableByCode
-     * @param code 
-     */
-    /**
-    private void findVariablesNotModifiableByCode(LinkedList<Integer> variablesNotModifiableByCode, Code code){
-        for(OneDeeDnaInstruction inst : code){
-            switch(inst.getType()){
-                case Constant.ASSIGN :
-                    Assign instAssign=(Assign) inst;
-                    if(hasACallToVariable(instAssign.getVariableIndex()))
-                        variablesNotModifiableByCode.clear();
-            }
-        }
-    }*/
+
     
     // What to do when tries to go to a variable that wasn't defined ? Both to read or to write ?
     // If we chose to return something and see what happens, we let more room for innovation

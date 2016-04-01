@@ -1,17 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package eu.combal_weiss.victor.lifesimulator.main;
 
 import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-/**
- *
- * @author vic
- */
 public class SpeciesMutantsRegister extends HashMap<Species, LinkedList<Species>> {
     
     public SpeciesMutantsRegister(){
@@ -42,18 +35,5 @@ public class SpeciesMutantsRegister extends HashMap<Species, LinkedList<Species>
         
         // @TODO : code the display function for mutants genealogy
     }
-    
-    /* -> Code to find a specie by specifying her code, in case we don't have a register for that
-    public Species getSpecies(String code){
-        String[] indexStringList=code.split("-");
-        
-        LinkedList<Species> speciesSet=this.get(null);
-        String speciesBeingSearched="";
-        for(int i=0; i<indexStringList.length; i++){
-            speciesBeingSearched=speciesBeingSearched.concat("-").concat(indexStringList[i]);
-        }
-    }*/
-    
-    
     
 }

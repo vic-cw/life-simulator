@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package eu.combal_weiss.victor.lifesimulator.main;
 
 import java.io.PrintStream;
@@ -10,10 +7,6 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- *
- * @author vic
- */
 public class CounterByPosition extends HashMap<Integer,Integer> {
     
     public void increment(int position){

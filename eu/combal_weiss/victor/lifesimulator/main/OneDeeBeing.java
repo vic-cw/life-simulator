@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package eu.combal_weiss.victor.lifesimulator.main;
 
 import eu.combal_weiss.victor.lifesimulator.onedeednacode.Code;
@@ -13,10 +10,6 @@ import eu.combal_weiss.victor.lifesimulator.onedeednacode.VariableEnvironment;
 import java.io.PrintStream;
 import java.util.Random;
 
-/**
- *
- * @author vic
- */
 public class OneDeeBeing {
     
 private int id;
@@ -105,10 +98,6 @@ private Interpreter interpreter;
     
     /** 
      * This is the decision process.
-     * <p>
-     * In this first version, each being is born with an intelligence boolean
-     * If intelligence is one, then the being will move his position away from the hole. If it is zero,
-     * it will get closer.
      */
     private void takeAction() throws LanguageImplementationException, Exception{
         
@@ -184,18 +173,9 @@ private Interpreter interpreter;
             return;
         
         int babyPosition;
-        // Solution si on veut que le bébé naisse au même endroit :
-        // babyPosition=position
-        // Solution si l'on veut une répartition aléatoire uniforme
+        
         babyPosition=world.random.nextInt(5);
         
-        // Solution si on veut que le bébé ait un ADN aléatoirement dumb ou easywalking, indépendant du père :
-        // babyDNA = null;
-        // Solution si on veut que le bébé ait le même ADN que le père :
-        // babyDNA = dna.duplicate();
-        
-        
-        // Solution si l'on veut qu'avec une certaine probabilité il y ait une mutation :
         if(world.random.nextInt(100)>Math.abs(probabilityToMutate)){
             world.addBeing(babyPosition, this, species);
         } else {

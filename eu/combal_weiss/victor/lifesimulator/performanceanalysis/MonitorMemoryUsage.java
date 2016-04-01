@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package eu.combal_weiss.victor.lifesimulator.performanceanalysis;
 
 import eu.combal_weiss.victor.lifesimulator.onedeednacode.LanguageImplementationException;
@@ -14,18 +11,11 @@ import eu.combal_weiss.victor.lifesimulator.main.C;
 import eu.combal_weiss.victor.lifesimulator.main.OneDeeWorld;
 import eu.combal_weiss.victor.lifesimulator.main.Species;
 
-/**
- *
- * @author vic
- */
 public class MonitorMemoryUsage {
     
     
     public static void main(String[] args) throws LanguageImplementationException, Exception {
         
-        /**
-        System.out.println("Scuse me sir, which address would you like to write ?");
-        String filename=in.readLine(); */
         
         //++++++++++++++++++++++++++ 
         // Asking for parameters
@@ -128,10 +118,3 @@ public class MonitorMemoryUsage {
         return new OneDeeWorld(2, C.defaultMaxNumberOfLoops, 50, 3, initialPopulation);
     }
 }
-
-/*
- * Empirical information I need :
- * - Number of positions occupied and range of positions
- * - Average length of species code
- * - 
- */

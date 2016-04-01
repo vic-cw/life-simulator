@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package eu.combal_weiss.victor.lifesimulator.main;
 
 import eu.combal_weiss.victor.lifesimulator.onedeednacode.Interpreter;
@@ -15,10 +12,6 @@ import java.util.Map.Entry;
 import java.util.Random;
 
 
-/**
- *
- * @author vic
- */
 public class OneDeeWorld {
     
     private int hole;
@@ -129,8 +122,6 @@ public class OneDeeWorld {
     }
     
     
-    // @TODO : chose whether I don't replace all of this by just "first arrived, first served", possibly with random iterating of population
-    
     public void displayWorld(PrintStream out){
         out.println("\n\n-------- One dimension world display ---------\n\n");
         out.print("Date : ");
@@ -186,7 +177,7 @@ public class OneDeeWorld {
         populationRegisterBySpecies.println(speciesMutantsRegister, out);
     }
     
-    // Le passage du temps
+
     public void iterate() throws LanguageImplementationException, Exception{
         if(C.debug){
             C.println("Beginning an iteration");
@@ -223,11 +214,6 @@ public class OneDeeWorld {
     // We could make food distribution parameters such as diameter or quantity be characteristics of the world.
     // We could also have food get old and rot. It could disappear or become poisonous.
     
-    /**
-     * Fonction de distribution qui s'arrange pour qu'il y ait autant de nourriture que d'êtres vivants
-     * et qu'elle soit répartie aléatoirement avec une distance moyenne entre deux trucs de nourriture égale à 3,
-     * et centrée autour de zéro.
-     */
     
     private void distributeFood(){
         if(C.debug){
@@ -275,25 +261,11 @@ public class OneDeeWorld {
         dead=null;
         System.gc();
         
-        /*
-        for(int i=0; i<lifeCount; i++){
-            if(!beingsRegisterById.containsKey(i))
-                continue;
-            OneDeeBeing being=beingsRegisterById.get(i);
-            if(killingDecision(being)){
-                beingDistribution.decrement(being.getPosition());
-                beingsRegisterById.remove(i);
-                populationRegisterBySpecies.registerDeath(being);
-            }
-        }*/
-        
         if(C.debug){
             C.println("Exiting killBeings() function");
         }
         
     }
-    
-    // Ici on pourrait ajouter des morts naturelles, des morts aléatoires, etc
     
     /**
      * This function decides whether or not a being should die at this date
@@ -312,9 +284,6 @@ public class OneDeeWorld {
     }
     
     
-    /*
-     * Cette fonction modifie les paramètres du monde indépendamment de ce qui s'y passe
-     */
     private void naturalModifications(){
         
     }

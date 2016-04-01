@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package eu.combal_weiss.victor.lifesimulator.main;
 
 import java.io.PrintStream;
@@ -12,10 +9,6 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Map.Entry;
 
-/**
- *
- * @author vic
- */
 class SpeciesPopulationRegister extends HashMap<Species, OneDeePopulation>{
     
     private int totalPopulationSize;
