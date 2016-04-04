@@ -25,6 +25,9 @@ public class LifeSimulator {
         
         System.out.println("---- WELCOME TO LIFE SIMULATOR ----\n");
         
+        System.out.println("Warning : Computing time increases non-linearly with age of the world."+"\n"+
+                "You are advised to proceed progressively, starting with less than 20 iterations.\n");
+        
         System.out.println("For description of available commands, type \"help\" or \"h\".\n");
         
         System.out.println("Your world is created. How can I help you ?");
