@@ -23,7 +23,7 @@ public class LifeSimulator {
     
     public static void textInterface(OneDeeWorld world) throws IOException, LanguageImplementationException, Exception{
         
-        System.out.println("---- WELCOME TO LIFE SIMULATOR ----");
+        System.out.println("---- WELCOME TO LIFE SIMULATOR ----\n");
         
         System.out.println("For description of available commands, type \"help\" or \"h\".\n");
         
