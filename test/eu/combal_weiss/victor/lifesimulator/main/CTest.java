@@ -1,6 +1,11 @@
 package eu.combal_weiss.victor.lifesimulator.main;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileDescriptor;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.util.Arrays;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -11,101 +16,828 @@ import static org.junit.Assert.*;
  */
 public class CTest {
     
-
-    /**
-     * Test of append method, of class C.
-     */
-    @Test
-    public void testAppend_String() {
-        System.out.println("append");
-        String s = "";
-        C.append(s);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    
+    private ByteArrayOutputStream buffer;
+    
+    public CTest(){
+        buffer = new ByteArrayOutputStream();
+    }
+    
+    private void bufferOutput(){
+        System.setOut(new PrintStream(buffer));
+    }
+    
+    private String getBufferContent(){
+        return buffer.toString();
+    }
+    
+    private void stopBufferingOutput(){
+        System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
+    }
+    
+    private String resetBuffer(){
+        String content = buffer.toString();
+        buffer.reset();
+        return content;
+    }
+    
+    @After
+    public void reset(){
+        stopBufferingOutput();
+        resetBuffer();
+        C.level = 0;
     }
 
     /**
-     * Test of appendln method, of class C.
+     * Test of append(String) method, of class C, when nothing has been outputted yet.
      */
     @Test
-    public void testAppendln_String() {
-        System.out.println("appendln");
-        String s = "";
-        C.appendln(s);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testAppend_StringArgumentEmptyStream() {
+        
+        String contentToAdd = "A cow has ";
+        bufferOutput();
+        
+        C.append(contentToAdd);
+        
+        stopBufferingOutput();
+        String result = resetBuffer();
+        
+        assertEquals(
+                "C.append didn't append the correct string. Expected output : "+
+                contentToAdd+", actual : "+result+"\n",
+                contentToAdd,
+                result
+                );
+    }
+    
+    /**
+     * Test of append(String) method, of class C, when something has already been outputted.
+     */
+    @Test
+    public void testAppend_StringArgumentNonEmptyStream(){
+        
+        String initialContent = "A cow has ";
+        String contentToAdd = "four legs";
+        String expected = initialContent+contentToAdd;
+        bufferOutput();
+        System.out.print(initialContent);
+        
+        C.append(contentToAdd);
+        
+        stopBufferingOutput();
+        String result = resetBuffer();
+        
+        assertEquals(
+                "C.append didn't append the correct string. Expected output : "+
+                expected+", actual : "+result+"\n",
+                expected,
+                result
+                );
+        
     }
 
     /**
-     * Test of append method, of class C.
+     * Test of appendln(String) method, of class C, when nothing has been outputted yet.
      */
     @Test
-    public void testAppend_int() {
-        System.out.println("append");
-        int i = 0;
-        C.append(i);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testAppendln_StringArgumentEmptyStream() {
+        
+        String contentToAdd = "A cow has four legs";
+        String expected = contentToAdd+"\n";
+        bufferOutput();
+        
+        C.appendln(contentToAdd);
+        
+        stopBufferingOutput();
+        String result = resetBuffer();
+        
+        assertEquals(
+                "C.appendln didn't append the correct string. Expected output : "+
+                expected+", actual : "+result+"\n",
+                expected,
+                result
+                );
+        
+    }
+     
+    /**
+     * Test of appendln(String) method, of class C, when something has already been outputted.
+     */
+    @Test
+    public void testAppendln_StringArgumentNonEmptyStream(){
+        
+        String initialContent = "A cow has four legs";
+        String contentToAdd = "A horse as well";
+        String expected = initialContent+contentToAdd+"\n";
+        bufferOutput();
+        System.out.print(initialContent);
+        
+        C.appendln(contentToAdd);
+        
+        stopBufferingOutput();
+        String result = getBufferContent();
+        
+        assertEquals(
+                "C.append didn't append the correct string. Expected output : "+
+                expected+", actual : "+result+"\n",
+                expected,
+                result
+                );
     }
 
     /**
-     * Test of appendln method, of class C.
+     * Test of append(int) method, of class C, when nothing has been outputted yet.
      */
     @Test
-    public void testAppendln_int() {
-        System.out.println("appendln");
-        int i = 0;
-        C.appendln(i);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testAppend_IntArgumentEmptyStream() {
+        
+        int contentToAdd = 42;
+        String expected = new Integer(contentToAdd).toString();
+        bufferOutput();
+        
+        C.append(contentToAdd);
+        
+        stopBufferingOutput();
+        String result = resetBuffer();
+        
+        assertEquals(
+                "C.append didn't append the correct int. Expected output : "+
+                expected+", actual : "+result+"\n",
+                expected,
+                result
+                );
+    }
+    
+    /**
+     * Test of append(int) method, of class C, when something has already been 
+     * outputted.
+     */
+    @Test
+    public void testAppend_IntArgumentNonEmptyStream(){
+        
+        String initialContent = "The answer is ";
+        int contentToAdd = 42;
+        String expected = initialContent+(new Integer(contentToAdd).toString());
+        bufferOutput();
+        System.out.print(initialContent);
+        
+        C.append(contentToAdd);
+        
+        stopBufferingOutput();
+        String result = resetBuffer();
+        
+        assertEquals(
+                "C.append didn't append the correct int. Expected output : "+
+                expected+", actual : "+result+"\n",
+                expected,
+                result
+                );
     }
 
     /**
-     * Test of print method, of class C.
+     * Test of appendln(int) method, of class C, when nothing has been outputted yet.
      */
     @Test
-    public void testPrint_String() {
-        System.out.println("print");
-        String s = "";
-        C.print(s);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testAppendln_IntArgumentEmptyString() {
+        int contentToAdd = 42;
+        String expected = new Integer(contentToAdd).toString()+"\n";
+        bufferOutput();
+        
+        C.appendln(contentToAdd);
+        
+        stopBufferingOutput();
+        String result = resetBuffer();
+        
+        assertEquals(
+                "C.append didn't append the correct int. Expected output : "+
+                expected+", actual : "+result+"\n",
+                expected,
+                result
+                );
+    }
+    
+    /**
+     * Test of appendln(int) method, of class C, when something has already
+     * been outputted.
+     */
+    @Test
+    public void testAppendln_IntArgumentNonEmptyString(){
+        String initialContent = "The answer is ";
+        int contentToAdd = 42;
+        String expected = initialContent+(new Integer(contentToAdd).toString())+"\n";
+        bufferOutput();
+        System.out.print(initialContent);
+        
+        C.appendln(contentToAdd);
+        
+        stopBufferingOutput();
+        String result = resetBuffer();
+        
+        assertEquals(
+                "C.append didn't append the correct int. Expected output : "+
+                expected+", actual : "+result+"\n",
+                expected,
+                result
+                );
     }
 
     /**
-     * Test of println method, of class C.
+     * Test of print(String) method, of class C, when indentation level is set to 0
+     * and nothing has been outputted yet.
      */
     @Test
-    public void testPrintln_String() {
-        System.out.println("println");
-        String s = "";
-        C.println(s);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testPrint_StringArgumentNoIndentationEmptyStream() {
+        C.level = 0;
+        String contentToAdd = "A cow has four legs";
+        bufferOutput();
+        
+        C.print(contentToAdd);
+        
+        stopBufferingOutput();
+        String result = resetBuffer();
+        
+        assertEquals(
+                "C.append didn't append the correct string. Expected output : "+
+                contentToAdd+", actual : "+result+"\n",
+                contentToAdd,
+                result
+                );
+    }
+    
+    /**
+     * Test of print(String) method, of class C, when indentation level is set to 0
+     * and something has already been outputted.
+     */
+    @Test
+    public void testPrint_StringArgumentNoIndentationNonEmptyStream(){
+        C.level = 0;
+        String initialContent = "A cow has ";
+        String contentToAdd = "four legs";
+        String expected = initialContent+contentToAdd;
+        bufferOutput();
+        System.out.print(initialContent);
+        
+        C.print(contentToAdd);
+        
+        stopBufferingOutput();
+        String result = resetBuffer();
+        
+        assertEquals(
+                "C.append didn't append the correct string. Expected output : "+
+                expected+", actual : "+result+"\n",
+                expected,
+                result
+                );
+    }
+    
+    /**
+     * Test of print(String) method, of class C, when indentation level is set to 1
+     * and nothing has been outputted yet.
+     */
+    @Test
+    public void testPrint_StringArgumentSimpleIndentationEmptyStream(){
+        C.level = 1;
+        String contentToAdd = "A cow has four legs";
+        String expected = "   "+contentToAdd;
+        bufferOutput();
+        
+        C.print(contentToAdd);
+        
+        stopBufferingOutput();
+        String result = resetBuffer();
+        
+        assertEquals(
+                "C.append didn't append the correct string. Expected output : "+
+                expected+", actual : "+result+"\n",
+                expected,
+                result
+                );
+    }
+    
+    /**
+     * Test of print(String) method, of class C, when indentation level is set to 1
+     * and something has already been outputted.
+     */
+    @Test
+    public void testPrint_StringArgumentSimpleIndentationNonEmptyStream(){
+        C.level = 1;
+        String initialContent = "A cow has ";
+        String contentToAdd = "four legs";
+        String expected = initialContent+"   "+contentToAdd;
+        bufferOutput();
+        System.out.print(initialContent);
+        
+        C.print(contentToAdd);
+        
+        stopBufferingOutput();
+        String result = resetBuffer();
+        
+        assertEquals(
+                "C.append didn't append the correct string. Expected output : "+
+                expected+", actual : "+result+"\n",
+                expected,
+                result
+                );
+    }
+    
+    /**
+     * Test of print(String) method, of class C, when indentation level is set to 3
+     * and nothing has been outputted yet.
+     */
+    @Test
+    public void testPrint_StringArgumentLongIndentationEmptyStream(){
+        C.level = 3;
+        String contentToAdd = "A cow has four legs";
+        String expected = "   "+"   "+"   "+contentToAdd;
+        bufferOutput();
+        
+        C.print(contentToAdd);
+        
+        stopBufferingOutput();
+        String result = resetBuffer();
+        
+        assertEquals(
+                "C.append didn't append the correct string. Expected output : "+
+                expected+", actual : "+result+"\n",
+                expected,
+                result
+                );
+    }
+    
+    /**
+     * Test of print(String) method of class C, when indentation level is set to 3, 
+     * and something has already been outputted.
+     */
+    @Test
+    public void testPrint_StringArgumentLongIndentationNonEmptyStream(){
+        C.level = 3;
+        String initialContent = "A cow has ";
+        String contentToAdd = "four legs";
+        String expected = initialContent+"   "+"   "+"   "+contentToAdd;
+        bufferOutput();
+        System.out.print(initialContent);
+        
+        C.print(contentToAdd);
+        
+        stopBufferingOutput();
+        String result = resetBuffer();
+        
+        assertEquals(
+                "C.append didn't append the correct string. Expected output : "+
+                expected+", actual : "+result+"\n",
+                expected,
+                result
+                );
     }
 
     /**
-     * Test of print method, of class C.
+     * Test of println(String) method, of class C, when indentation level is set to 0 and
+     * nothing has been outputted yet.
      */
     @Test
-    public void testPrint_int() {
-        System.out.println("print");
-        int i = 0;
-        C.print(i);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testPrintln_StringArgumentNoIndentationEmptyStream() {
+        C.level = 0;
+        String contentToAdd = "A cow has four legs";
+        String expected = contentToAdd+"\n";
+        bufferOutput();
+        
+        C.println(contentToAdd);
+        
+        stopBufferingOutput();
+        String result = resetBuffer();
+        
+        assertEquals(
+                "C.append didn't append the correct string. Expected output : "+
+                expected+", actual : "+result+"\n",
+                expected,
+                result
+                );
+    }
+    
+    /**
+     * Test of println(String) method, of class C, when indentation level is set to 0 and
+     * something has already been outputted.
+     */
+    @Test
+    public void testPrintln_StringArgumentNoIndentationNonEmptyStream(){
+        C.level = 0;
+        String initialContent = "A cow has ";
+        String contentToAdd = "four legs";
+        String expected = initialContent+contentToAdd+"\n";
+        bufferOutput();
+        System.out.print(initialContent);
+        
+        C.println(contentToAdd);
+        
+        stopBufferingOutput();
+        String result = resetBuffer();
+        
+        assertEquals(
+                "C.append didn't append the correct string. Expected output : "+
+                expected+", actual : "+result+"\n",
+                expected,
+                result
+                );
+    }
+    
+    /**
+     * Test of println(String) method, of class C, when indentation level is set to 1 and
+     * nothing has been outputted yet.
+     */
+    @Test
+    public void testPrintln_StringArgumentSimpleIndentationEmptyStream(){
+        C.level = 1;
+        String contentToAdd = "A cow has four legs";
+        String expected = "   "+contentToAdd+"\n";
+        bufferOutput();
+        
+        C.println(contentToAdd);
+        
+        stopBufferingOutput();
+        String result = resetBuffer();
+        
+        assertEquals(
+                "C.append didn't append the correct string. Expected output : "+
+                expected+", actual : "+result+"\n",
+                expected,
+                result
+                );
+    }
+    
+    /**
+     * Test of println(String) method, of class C, when indentation level is set to 1 and
+     * something has already been outputted.
+     */
+    @Test
+    public void testPrintln_StringArgumentSimpleIndentationNonEmptyStream(){
+        C.level = 1;
+        String initialContent = "A cow has ";
+        String contentToAdd = "four legs";
+        String expected = initialContent+"   "+contentToAdd+"\n";
+        bufferOutput();
+        System.out.print(initialContent);
+        
+        C.println(contentToAdd);
+        
+        stopBufferingOutput();
+        String result = resetBuffer();
+        
+        assertEquals(
+                "C.append didn't append the correct string. Expected output : "+
+                expected+", actual : "+result+"\n",
+                expected,
+                result
+                );
+    }
+    
+    /**
+     * Test of println(String) method, of class C, when indentation level is set to 3 and 
+     * nothing has been outputted yet.
+     */
+    @Test
+    public void testPrintln_StringArgumentLongIndentationEmptyStream(){
+        C.level = 3;
+        String contentToAdd = "A cow has four legs";
+        String expected = "   "+"   "+"   "+contentToAdd+"\n";
+        bufferOutput();
+        
+        C.println(contentToAdd);
+        
+        stopBufferingOutput();
+        String result = resetBuffer();
+        
+        assertEquals(
+                "C.append didn't append the correct string. Expected output : "+
+                expected+", actual : "+result+"\n",
+                expected,
+                result
+                );
+    }
+    
+    /**
+     * Test of println(String) method, of class C, when indentation level is set to 3 and
+     * something has already been outputted.
+     */
+    @Test
+    public void testPrintln_StringArgumentLongIndentationNonEmptyStream(){
+        C.level = 3;
+        String initialContent = "A cow has ";
+        String contentToAdd = "four legs";
+        String expected = initialContent+"   "+"   "+"   "+contentToAdd+"\n";
+        bufferOutput();
+        System.out.print(initialContent);
+        
+        C.println(contentToAdd);
+        
+        stopBufferingOutput();
+        String result = resetBuffer();
+        
+        assertEquals(
+                "C.append didn't append the correct string. Expected output : "+
+                expected+", actual : "+result+"\n",
+                expected,
+                result
+                );
     }
 
     /**
-     * Test of println method, of class C.
+     * Test of print(int) method, of class C, when indentation level is set to 0
+     * and nothing has been outputted yet.
      */
     @Test
-    public void testPrintln_int() {
-        System.out.println("println");
-        int i = 0;
-        C.println(i);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testPrint_IntArgumentNoIndentationEmptyStream() {
+        C.level = 0;
+        int contentToAdd = 68;
+        String expected = new Integer(contentToAdd).toString();
+        bufferOutput();
+        
+        C.print(contentToAdd);
+        
+        stopBufferingOutput();
+        String result = resetBuffer();
+        
+        assertEquals(
+                "C.append didn't append the correct string. Expected output : "+
+                expected+", actual : "+result+"\n",
+                expected,
+                result
+                );
+    }
+    
+    /**
+     * Test of print(int) method, of class C, when indentation level is set to 0
+     * and something has already been outputted.
+     */
+    @Test
+    public void testPrint_IntArgumentNoIndentationNonEmptyStream(){
+        C.level = 0;
+        String initialContent = "The answer is ";
+        int contentToAdd = 68;
+        String expected = initialContent+(new Integer(contentToAdd).toString());
+        bufferOutput();
+        System.out.print(initialContent);
+        
+        C.print(contentToAdd);
+        
+        stopBufferingOutput();
+        String result = resetBuffer();
+        
+        assertEquals(
+                "C.append didn't append the correct string. Expected output : "+
+                expected+", actual : "+result+"\n",
+                expected,
+                result
+                );
+    }
+    
+    /**
+     * Test of print(int) method, of class C, when indentation level is set to 1
+     * and nothing has been outputted yet.
+     */
+    @Test
+    public void testPrint_IntArgumentSimpleIndentationEmptyStream(){
+        C.level = 1;
+        int contentToAdd = 68;
+        String expected = "   "+new Integer(contentToAdd).toString();
+        bufferOutput();
+        
+        C.print(contentToAdd);
+        
+        stopBufferingOutput();
+        String result = resetBuffer();
+        
+        assertEquals(
+                "C.append didn't append the correct string. Expected output : "+
+                expected+", actual : "+result+"\n",
+                expected,
+                result
+                );
+    }
+    
+    /**
+     * Test of print(int) method, of class C, when indentation level is set to 1
+     * and something has already been outputted.
+     */
+    @Test
+    public void testPrint_IntArgumentSimpleIndentationNonEmptyStream(){
+        C.level = 1;
+        String initialContent = "The answer is ";
+        int contentToAdd = 68;
+        String expected = initialContent+"   "+new Integer(contentToAdd).toString();
+        bufferOutput();
+        System.out.print(initialContent);
+        
+        C.print(contentToAdd);
+        
+        stopBufferingOutput();
+        String result = resetBuffer();
+        
+        assertEquals(
+                "C.append didn't append the correct string. Expected output : "+
+                expected+", actual : "+result+"\n",
+                expected,
+                result
+                );
+    }
+    
+    /**
+     * Test of print(int) method, of class C, when indentation level is set to 3
+     * and nothing has been outputted yet.
+     */
+    @Test
+    public void testPrint_IntArgumentLongIndentationEmptyStream(){
+        C.level = 3;
+        int contentToAdd = 68;
+        String expected = "   "+"   "+"   "+new Integer(contentToAdd).toString();
+        bufferOutput();
+        
+        C.print(contentToAdd);
+        
+        stopBufferingOutput();
+        String result = resetBuffer();
+        
+        assertEquals(
+                "C.append didn't append the correct string. Expected output : "+
+                expected+", actual : "+result+"\n",
+                expected,
+                result
+                );
+    }
+    
+    /**
+     * Test of print(int) method of class C, when indentation level is set to 3, 
+     * and something has already been outputted.
+     */
+    @Test
+    public void testPrint_IntArgumentLongIndentationNonEmptyStream(){
+        C.level = 3;
+        String initialContent = "The answer is ";
+        int contentToAdd = 68;
+        String expected = initialContent+"   "+"   "+"   "+new Integer(contentToAdd).toString();
+        bufferOutput();
+        System.out.print(initialContent);
+        
+        C.print(contentToAdd);
+        
+        stopBufferingOutput();
+        String result = resetBuffer();
+        
+        assertEquals(
+                "C.append didn't append the correct string. Expected output : "+
+                expected+", actual : "+result+"\n",
+                expected,
+                result
+                );
+    }
+
+    /**
+     * Test of println(int) method, of class C, when indentation level is set to 0 and
+     * nothing has been outputted yet.
+     */
+    @Test
+    public void testPrintln_IntArgumentNoIndentationEmptyStream() {
+        C.level = 0;
+        int contentToAdd = 68;
+        String expected = new Integer(contentToAdd).toString()+"\n";
+        bufferOutput();
+        
+        C.println(contentToAdd);
+        
+        stopBufferingOutput();
+        String result = resetBuffer();
+        
+        assertEquals(
+                "C.append didn't append the correct string. Expected output : "+
+                expected+", actual : "+result+"\n",
+                expected,
+                result
+                );
+    }
+    
+    /**
+     * Test of println(int) method, of class C, when indentation level is set to 0 and
+     * something has already been outputted.
+     */
+    @Test
+    public void testPrintln_IntArgumentNoIndentationNonEmptyStream(){
+        C.level = 0;
+        String initialContent = "The answer is ";
+        int contentToAdd = 68;
+        String expected = initialContent+new Integer(contentToAdd).toString()+"\n";
+        bufferOutput();
+        System.out.print(initialContent);
+        
+        C.println(contentToAdd);
+        
+        stopBufferingOutput();
+        String result = resetBuffer();
+        
+        assertEquals(
+                "C.append didn't append the correct string. Expected output : "+
+                expected+", actual : "+result+"\n",
+                expected,
+                result
+                );
+    }
+    
+    /**
+     * Test of println(int) method, of class C, when indentation level is set to 1 and
+     * nothing has been outputted yet.
+     */
+    @Test
+    public void testPrintln_IntArgumentSimpleIndentationEmptyStream(){
+        C.level = 1;
+        int contentToAdd = 68;
+        String expected = "   "+new Integer(contentToAdd).toString()+"\n";
+        bufferOutput();
+        
+        C.println(contentToAdd);
+        
+        stopBufferingOutput();
+        String result = resetBuffer();
+        
+        assertEquals(
+                "C.append didn't append the correct string. Expected output : "+
+                expected+", actual : "+result+"\n",
+                expected,
+                result
+                );
+    }
+    
+    /**
+     * Test of println(int) method, of class C, when indentation level is set to 1 and
+     * something has already been outputted.
+     */
+    @Test
+    public void testPrintln_IntArgumentSimpleIndentationNonEmptyStream(){
+        C.level = 1;
+        String initialContent = "The answer is ";
+        int contentToAdd = 68;
+        String expected = initialContent+"   "+new Integer(contentToAdd).toString()+"\n";
+        bufferOutput();
+        System.out.print(initialContent);
+        
+        C.println(contentToAdd);
+        
+        stopBufferingOutput();
+        String result = resetBuffer();
+        
+        assertEquals(
+                "C.append didn't append the correct string. Expected output : "+
+                expected+", actual : "+result+"\n",
+                expected,
+                result
+                );
+    }
+    
+    /**
+     * Test of println(int) method, of class C, when indentation level is set to 3 and 
+     * nothing has been outputted yet.
+     */
+    @Test
+    public void testPrintln_IntArgumentLongIndentationEmptyStream(){
+        C.level = 3;
+        int contentToAdd = 68;
+        String expected = "   "+"   "+"   "+new Integer(contentToAdd).toString()+"\n";
+        bufferOutput();
+        
+        C.println(contentToAdd);
+        
+        stopBufferingOutput();
+        String result = resetBuffer();
+        
+        assertEquals(
+                "C.append didn't append the correct string. Expected output : "+
+                expected+", actual : "+result+"\n",
+                expected,
+                result
+                );
+    }
+    
+    /**
+     * Test of println(int) method, of class C, when indentation level is set to 3 and
+     * something has already been outputted.
+     */
+    @Test
+    public void testPrintln_IntArgumentLongIndentationNonEmptyStream(){
+        C.level = 3;
+        String initialContent = "The answer is ";
+        int contentToAdd = 68;
+        String expected = initialContent+"   "+"   "+"   "+new Integer(contentToAdd).toString()+"\n";
+        bufferOutput();
+        System.out.print(initialContent);
+        
+        C.println(contentToAdd);
+        
+        stopBufferingOutput();
+        String result = resetBuffer();
+        
+        assertEquals(
+                "C.append didn't append the correct string. Expected output : "+
+                expected+", actual : "+result+"\n",
+                expected,
+                result
+                );
     }
 
     /**
