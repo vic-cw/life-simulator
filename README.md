@@ -14,10 +14,6 @@ In a terminal, cd to its directory and run :
 java -jar LifeSimulator.jar
 ```
 
-## Code documentation
-
-Available at http://victor.combal-weiss.eu/lifesimulator/doc
-
 ## Available commands
 
 <table>
