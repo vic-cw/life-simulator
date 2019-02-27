@@ -143,7 +143,7 @@ java -jar LifeSimulator.jar
 
 ## License
 
-    Copyright 2012-2016 Victor Combal-Weiss
+    Copyright 2012-2019 Victor Combal-Weiss
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
