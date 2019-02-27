@@ -16,112 +16,22 @@ java -jar LifeSimulator.jar
 
 ## Available commands
 
-<table>
-  <tr>
-    <td>
-      iterate | iterate once
-    </td>
-    <td>
-      Simulate passage of time for 1 cycle. Distribute food, declare dead beings who should, breed, etc
-    </td>
-  </tr>
-  <tr>
-    <td>
-      iterate &lt;x&gt;
-    </td>
-    <td>
-      Simulate passage of time for &lt;x&gt; cycles.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      display | display world
-    </td>
-    <td>
-      Display state of the world, list beings and species
-    </td>
-  </tr>
-  <tr>
-    <td>
-      display date
-    </td>
-    <td>
-      Display current world's date
-    </td>
-  </tr>
-  <tr>
-    <td>
-      display number of beings
-    </td>
-    <td>
-      Display number of living beings
-    </td>
-  </tr>
-  <tr>
-    <td>
-      display population
-    </td>
-    <td>
-      Display summary of all living beings
-    </td>
-  </tr>
-  <tr>
-    <td>
-      display being &lt;x&gt;
-    </td>
-    <td>
-      Display information about being with id &lt;x&gt;
-    </td>
-  </tr>
-  <tr>
-    <td>
-      display number of species
-    </td>
-    <td>
-      Display number of living species
-    </td>
-  </tr>
-  <tr>
-    <td>
-      display species &lt;x-x-x&gt;
-    </td>
-    <td>
-      Display information, including DNA, about species with code &lt;x-x-x&gt;
-    </td>
-  </tr>
-  <tr>
-    <td>
-      display species all
-    </td>
-    <td>
-      Display summary information on all non-extinct species
-    </td>
-  </tr>
-  <tr>
-    <td>
-      display DNA composition
-    </td>
-    <td>
-      Display total number of each type of DNA code element, across all living beings
-    </td>
-  </tr>
-  <tr>
-    <td>
-      quit
-    </td>
-    <td>
-      Exit the program
-    </td>
-  </tr>
-  <tr>
-    <td>
-      help | h
-    </td>
-    <td>
-      Display available commands
-    </td>
-  </tr>
-</table>
+| Command | Description |
+|--- |--- |
+|`iterate` <br> `iterate once`|Simulate passage of time for 1 cycle. Distribute food, declare dead beings who should, breed, etc|
+|`iterate <x>`|Simulate passage of time for <x> cycles.|
+|`display` <br> `display world`|Display state of the world, list beings and species|
+|`display date`|Display current world's date|
+|`display number of beings`|Display number of living beings|
+|`display population`|Display summary of all living beings|
+|`display being <x>`|Display information about being with id <x>|
+|`display number of species`|Display number of living species|
+|`display species <x-x-x>`|Display information, including DNA, about species with code <x-x-x>|
+|`display species all`|Display summary information on all non-extinct species|
+|`display DNA composition`|Display total number of each type of DNA code element, across all living beings|
+|`quit`|Exit the program|
+|`help` <br> `h`|Display available commands|
+
 
 ## Rules of the world
 
